@@ -37,6 +37,7 @@ public class MainWindow extends JFrame implements KeyListener{
     
     private void initComponents() {
         addKeyListener(this);
+        this.add(Main.camera);
     }
     
     

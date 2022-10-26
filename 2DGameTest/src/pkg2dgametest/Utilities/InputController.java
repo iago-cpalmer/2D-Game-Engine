@@ -5,8 +5,6 @@
 package pkg2dgametest.Utilities;
 
 import java.util.HashMap;
-import pkg2dgametest.Enums.KEY_CONTROLS;
-import pkg2dgametest.Enums.MOUSE_CONTROLS;
 
 /**
  *
@@ -15,20 +13,25 @@ import pkg2dgametest.Enums.MOUSE_CONTROLS;
 public class InputController {
     
     static final int N_CONTROLS = 4;
+    static String[] controlNames = {"MOVE_LEFT", "MOVE_RIGHT", "JUMP", "INTERACT"};
+    static HashMap<String, Integer> controls = new HashMap<String, Integer>(N_CONTROLS); //Name of control, e.g.: MOVE_LEFT & control's id
+    static char[] keys = new char[N_CONTROLS]; //keys set to each id
+    static boolean[] keysPressed = new boolean[N_CONTROLS]; //check if a key is pressed through id
     
-    static HashMap<Character, Integer> keysControls = new HashMap<Character, Integer>(N_CONTROLS); // Char of key and its id in keysPressed
-    
-    static boolean[] keysPressed = new boolean[N_CONTROLS]; //A, D, SPACE, E
-    static boolean[] mousePressed = new boolean[MOUSE_CONTROLS.values().length]; //left, middle, right
+    static boolean[] mousePressed = new boolean[3]; //left, middle, right
     
     public static void setupControls() {
-        //Read from controls file
+        //Set-up controlNames with his ID;
+        for(int i = 0; i < controlNames.length; i++) {
+            controls.put(controlNames[i], i);
+        }
+        //Read from controls file: (Format: id-key)
         
         //Temporal:
-        keysControls.put('a', 0);
-        keysControls.put('d', 1);
-        keysControls.put(' ', 2);
-        keysControls.put('e', 3);
+        keys[0] = 'a';
+        keys[1] = 'd';
+        keys[2] = ' ';
+        keys[3] = 'e';
     } 
     /**
      * Change key state
@@ -36,19 +39,18 @@ public class InputController {
      * @param state 
      */
     public static void setKeyState(char key, boolean state) {
-        if(keysControls.containsKey(key)) {
-            int id = keysControls.get(key);
-            keysPressed[id] = state;
+        int keyId = containsAndGetId(keys, key);
+        if(keyId!=-1) {
+            keysPressed[keyId] = state;
         }
-        
     }
     /**
-     * Get key code of a character
+     * Get key id of a character
      * @param c
      * @return 
      */
-    public static int getKeyCode(char c) {
-        return keysControls.get(c);
+    public static int getKeyId(char c) {
+        return containsAndGetId(keys, c);
     }
     /**
      * Returns whether a key is pressed or not
@@ -57,6 +59,10 @@ public class InputController {
      */
     public boolean isKeyPressed(int id) {
         return keysPressed[id];
+    }
+    
+    public static int getControlId(String controlName) {
+        return controls.get(controlName);
     }
     
     /**
@@ -70,4 +76,13 @@ public class InputController {
         return mousePressed[mouseButtonId];
     }
     
+    
+    public static int containsAndGetId(char[] chars, char c) {
+        for(int i = 0; i < keys.length;i++) {
+            if(chars[i]==c) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }
