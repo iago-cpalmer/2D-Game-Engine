@@ -26,6 +26,14 @@ public abstract class GameObject {
         return components;
     }
     
+    public void update() {
+        
+    }
+    
+    public void start() {
+        
+    }
+    
     public void addComponent(GameComponent gc) {
         components.add(gc);
     }

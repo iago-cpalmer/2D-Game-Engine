@@ -23,9 +23,16 @@ public class Scene{
     }
     public void addObject(GameObject o) {
         objects.add(o);
+        o.start();
     }
     
     public ArrayList<GameObject> getGameObjects() {
         return objects;
+    }
+    
+    public void update() {
+        for(GameObject gameObject:objects) {
+            gameObject.update();
+        }
     }
 }
