@@ -3,8 +3,8 @@ package pkg2dgametest;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
-import pkg2dgametest.Enums.KEY_CONTROLS;
 import pkg2dgametest.GameComponents.Position;
+import pkg2dgametest.Scripts.World;
 import pkg2dgametest.Utilities.InputController;
 
 /**
@@ -20,12 +20,13 @@ public class Main {
     
     public static Camera camera;
     public static Scene currentScene;
-    
+    public static World world;
     public static void main(String[] args) {
         InputController.setupControls();
         camera = new Camera(new Position(0,0), 1920, 1080);
-        mainWindow = new MainWindow(height, width, true);
-        
+        currentScene = new Scene("defaultScene");
+        world = new World();
+        mainWindow = new MainWindow(height, width, false);
         
         while(gameIsRunning) {
             //get user input

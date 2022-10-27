@@ -22,14 +22,14 @@ public class MainWindow extends JFrame implements KeyListener{
         this.width=width;
         
         setLayout(null);
-        initComponents();
-        setTitle("2DGameTest");
+        
+        setTitle("2D Game Engine");
         setSize(width, height);
         if(fullScreen) {
             setExtendedState(JFrame.MAXIMIZED_BOTH); 
             setUndecorated(true);
         }
-       
+        initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);

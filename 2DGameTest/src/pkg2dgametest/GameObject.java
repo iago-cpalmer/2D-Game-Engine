@@ -13,10 +13,21 @@ import pkg2dgametest.GameComponents.Position;
  * @author joanc
  */
 public abstract class GameObject {
-    private ArrayList<GameComponent> components = new ArrayList<GameComponent>();
-    private Position position;
+    public ArrayList<GameComponent> components;
+    public Position position;
+    
+    public GameObject() {
+        position = new Position(0,0);
+        components = new ArrayList<GameComponent>();
+    }
+    
+    
     public ArrayList<GameComponent> getGameComponents() {
         return components;
+    }
+    
+    public void addComponent(GameComponent gc) {
+        components.add(gc);
     }
     
     public GameComponent getComponent(String gameComponentName) {

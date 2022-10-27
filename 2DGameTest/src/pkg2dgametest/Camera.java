@@ -29,7 +29,7 @@ public class Camera extends JPanel{
             SpriteRenderer r = (SpriteRenderer)o.getComponent("SpriteRenderer");
             if(r!=null) {
                 //calculate x and y position in camera from world coords
-                r.paintComponent(g, 0, 0);
+                r.paintComponent(g, 100, 100);
             }
         }
     }
