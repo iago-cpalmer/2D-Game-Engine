@@ -4,6 +4,7 @@
  */
 package pkg2dgametest;
 
+import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
@@ -20,7 +21,7 @@ public class MainWindow extends JFrame implements KeyListener{
         this.fullScreen=fullScreen;
         this.height=height;
         this.width=width;
-        
+        initComponents();
         setLayout(null);
         
         setTitle("2D Game Engine");
@@ -29,15 +30,23 @@ public class MainWindow extends JFrame implements KeyListener{
             setExtendedState(JFrame.MAXIMIZED_BOTH); 
             setUndecorated(true);
         }
-        initComponents();
+        
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
     
     private void initComponents() {
+        
         addKeyListener(this);
-        this.add(Main.camera);
+        add(Main.camera,  BorderLayout.CENTER);
+    }
+    
+    @Override
+    public void repaint() {
+        super.repaint();
+        System.out.println("paint frame");
+        //Main.camera.paintComponent(g);
     }
     
     

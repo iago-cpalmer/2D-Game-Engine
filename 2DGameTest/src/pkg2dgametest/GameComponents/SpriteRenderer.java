@@ -6,6 +6,7 @@ package pkg2dgametest.GameComponents;
 
 import pkg2dgametest.GameComponents.GameComponent;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -43,6 +44,8 @@ public class SpriteRenderer extends GameComponent{
      * @param y 
      */
     public void paintComponent(Graphics g, int x, int y) {
-        g.drawImage(sprite, x, y, sprite.getWidth()*scale, sprite.getHeight()*scale, null);
+        Graphics2D g2d = (Graphics2D) g;
+        System.out.println("draw");
+        g2d.drawImage(sprite, x, y, sprite.getWidth()*scale, sprite.getHeight()*scale, null);
     }
 }

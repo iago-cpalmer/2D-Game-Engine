@@ -23,8 +23,12 @@ public class Camera extends JPanel{
         this.height=height;
     }
     
+    
+    
     @Override
     public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        System.out.println("paint camera");
         for(GameObject o:Main.currentScene.getGameObjects()) {
             SpriteRenderer r = (SpriteRenderer)o.getComponent("SpriteRenderer");
             if(r!=null) {
