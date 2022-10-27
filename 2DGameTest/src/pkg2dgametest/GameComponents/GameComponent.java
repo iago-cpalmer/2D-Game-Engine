@@ -14,4 +14,11 @@ public abstract class GameComponent {
     public String getComponentName() {
         return componentName;
     }
+    
+    public void update() {
+        
+    }
+    public void start() {
+        
+    }
 }

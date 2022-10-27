@@ -48,4 +48,14 @@ public class SpriteRenderer extends GameComponent{
         System.out.println("draw");
         g2d.drawImage(sprite, x, y, sprite.getWidth()*scale, sprite.getHeight()*scale, null);
     }
+    /*
+    @Override
+    public void update() {
+        System.out.println("Sprite Renderer update");
+    }
+    
+    @Override
+    public void start() {
+        System.out.println("Sprite Renderer start");
+    }*/
 }

@@ -21,9 +21,26 @@ public abstract class GameObject {
         components = new ArrayList<GameComponent>();
     }
     
+    public GameObject(float x, float y) {
+        position = new Position(x, y);
+        components = new ArrayList<GameComponent>();
+    }
+    
     
     public ArrayList<GameComponent> getGameComponents() {
         return components;
+    }
+    
+    public void update() {
+        for(GameComponent g:components) {
+            g.update();
+        }
+    }
+    
+    public void start() {
+        for(GameComponent g:components) {
+            g.start();
+        }
     }
     
     public void addComponent(GameComponent gc) {
@@ -41,5 +58,9 @@ public abstract class GameObject {
     
     public Position getPosition() {
         return position;
+    }
+    public void setPosition(float x, float y) {
+        position.setX(x);
+        position.setY(y);
     }
 }

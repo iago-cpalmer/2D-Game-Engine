@@ -18,4 +18,16 @@ public class Player extends GameObject{
         position.setY(0);
         components.add(new SpriteRenderer(1, "Images/test.png", this));
     }
+    @Override
+    public void update() {
+        super.update();
+        System.out.println("Update player");
+    }
+    
+    @Override
+    public void start() {
+        super.start();
+        System.out.println("Start player");
+    }
+    
 }
