@@ -47,25 +47,30 @@ public class Main {
             prevTime = date.getTime();
             accumTime+=elapsedTime;
             //System.out.println(Time.deltaTime);
+            timeWhenFrameStarts = date.getTime();
             //get user input
             
             //update game state
+
             while(accumTime >= updateTime) {
                 currentScene.update();
                 accumTime -= updateTime;
                 System.out.println(accumTime + " - " + updateTime);
             }
+            currentScene.update();
+
             //render
             System.out.println("render");
             mainWindow.repaint();
             
-            
-            
         }
-        
+        Time.deltaTime=(date.getTime()-timeWhenFrameStarts)/1000;
+            System.out.println(Time.deltaTime);
     }
     
     
     
     
 }
+
+            
