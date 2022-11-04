@@ -34,30 +34,58 @@ public class Main {
         
         mainWindow = new MainWindow(height, width, false);
         
-        Date date = new Date();
         
-        long updateTime = 2; //1s/60frames * 1000ms
-        long accumTime = 0;
-        long prevTime = date.getTime();
+        final int MAX_UPDATES_PER_SECOND = 60; //UPS
+        final int MAX_FRAMES_PER_SECOND = 60; //FPS
+        
+        final double MAX_UPDATE_TIME = 1000000000/ MAX_UPDATES_PER_SECOND; //Time between each update
+        final double MAX_FRAME_TIME = 1000000000/MAX_FRAMES_PER_SECOND; //Time between each frame
+        
+        double updateDeltaTime = 0;
+        double frameDeltaTime = 0;
+        
+        long prevTime = System.nanoTime();
+        long timer = System.currentTimeMillis();
+        int frames = 0, updates = 0;
+        double timer2 = 0;
         
         while(gameIsRunning) {
-            long currentTime = date.getTime();
+            long currentTime = System.nanoTime();
             long elapsedTime = currentTime-prevTime;
-            Time.deltaTime=elapsedTime;
-            prevTime = date.getTime();
-            accumTime+=elapsedTime;
-            //System.out.println(Time.deltaTime);
+            updateDeltaTime+=elapsedTime;
+            frameDeltaTime+=elapsedTime;
+            Time.deltaTime = updateDeltaTime/1000000000;
+            prevTime = currentTime;
             //get user input
             
             //update game state
-            while(accumTime >= updateTime) {
+
+            if(updateDeltaTime > MAX_UPDATE_TIME) {
                 currentScene.update();
-                accumTime -= updateTime;
-                System.out.println(accumTime + " - " + updateTime);
+                timer2+=Time.deltaTime;
+                //System.out.println("Update: " + updateDeltaTime + " - " + MAX_UPDATE_TIME);
+                updateDeltaTime -= MAX_UPDATE_TIME;
+                updates++;
+                //System.out.println("Update: " + updateDeltaTime + " - " + MAX_UPDATE_TIME);
             }
+                       
             //render
-            System.out.println("render");
-            mainWindow.repaint();
+            if(frameDeltaTime > MAX_FRAME_TIME) {
+                mainWindow.repaint();
+                frameDeltaTime -= MAX_FRAME_TIME;
+                frames++;
+                //System.out.println("Paint: " + frameDeltaTime + " - " + MAX_FRAME_TIME);
+            }
+            
+            if(System.currentTimeMillis()-timer>=1000) {
+                /*
+                System.out.println(frames + " FPS. " + updates + " UPS" + " - FPSDeltaTime: "+1/Time.deltaTime + 
+                        " - Timer2: " + timer2 + " - CurrentTime: "+System.currentTimeMillis());*/
+                frames = 0;
+                updates=0;
+                timer+=1000;
+                timer2=0;
+            }
             
             
             
@@ -69,3 +97,5 @@ public class Main {
     
     
 }
+
+            

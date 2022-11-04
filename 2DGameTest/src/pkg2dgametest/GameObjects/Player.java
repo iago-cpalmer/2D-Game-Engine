@@ -21,13 +21,13 @@ public class Player extends GameObject{
     @Override
     public void update() {
         super.update();
-        System.out.println("Update player");
+        //System.out.println("Update player");
     }
     
     @Override
     public void start() {
         super.start();
-        System.out.println("Start player");
+        //System.out.println("Start player");
     }
     
 }
