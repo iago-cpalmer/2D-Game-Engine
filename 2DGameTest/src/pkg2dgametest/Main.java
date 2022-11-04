@@ -47,7 +47,6 @@ public class Main {
         long prevTime = System.nanoTime();
         long timer = System.currentTimeMillis();
         int frames = 0, updates = 0;
-        double timer2 = 0;
         
         while(gameIsRunning) {
             long currentTime = System.nanoTime();
@@ -62,11 +61,8 @@ public class Main {
 
             if(updateDeltaTime > MAX_UPDATE_TIME) {
                 currentScene.update();
-                timer2+=Time.deltaTime;
-                //System.out.println("Update: " + updateDeltaTime + " - " + MAX_UPDATE_TIME);
                 updateDeltaTime -= MAX_UPDATE_TIME;
                 updates++;
-                //System.out.println("Update: " + updateDeltaTime + " - " + MAX_UPDATE_TIME);
             }
                        
             //render
@@ -74,7 +70,6 @@ public class Main {
                 mainWindow.repaint();
                 frameDeltaTime -= MAX_FRAME_TIME;
                 frames++;
-                //System.out.println("Paint: " + frameDeltaTime + " - " + MAX_FRAME_TIME);
             }
             
             if(System.currentTimeMillis()-timer>=1000) {
@@ -84,13 +79,11 @@ public class Main {
                 frames = 0;
                 updates=0;
                 timer+=1000;
-                timer2=0;
             }
             
             
             
         }
-        
     }
     
     
