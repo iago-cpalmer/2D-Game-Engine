@@ -23,6 +23,12 @@ public class Player extends GameObject{
         position.setY(0);
         components.add(new SpriteRenderer(1, "Images/test.png", this));
     }
+    public Player(float x, float y) {
+        super();
+        position.setX(x);
+        position.setY(y);
+        components.add(new SpriteRenderer(1, "Images/test.png", this));
+    }
     @Override
     public void update() {
         super.update();

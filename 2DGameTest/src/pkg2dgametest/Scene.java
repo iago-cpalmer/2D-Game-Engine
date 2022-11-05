@@ -8,6 +8,7 @@ import pkg2dgametest.GameComponents.SpriteRenderer;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import javax.swing.JPanel;
+import pkg2dgametest.GameObjects.Player;
 import pkg2dgametest.Scripts.World;
 
 /**
@@ -17,9 +18,11 @@ import pkg2dgametest.Scripts.World;
 public class Scene{
     private ArrayList<GameObject> objects;
     private String sceneName;
+    
     public Scene(String sceneName) {
         objects = new ArrayList<GameObject>();
         this.sceneName=sceneName;
+        start();
     }
     public void addObject(GameObject o) {
         objects.add(o);
@@ -34,5 +37,9 @@ public class Scene{
         for(GameObject gameObject:objects) {
             gameObject.update();
         }
+    }
+    
+    public void start() {
+        
     }
 }

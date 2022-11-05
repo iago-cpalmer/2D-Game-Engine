@@ -31,8 +31,8 @@ public class Main {
         mainWindow = new MainWindow(height, width, false);
         
         
-        final int MAX_UPDATES_PER_SECOND = 60; //UPS
-        final int MAX_FRAMES_PER_SECOND = 60; //FPS
+        final int MAX_UPDATES_PER_SECOND = 10000; //UPS
+        final int MAX_FRAMES_PER_SECOND = 10000; //FPS
         
         final double MAX_UPDATE_TIME = 1000000000/ MAX_UPDATES_PER_SECOND; //Time between each update
         final double MAX_FRAME_TIME = 1000000000/MAX_FRAMES_PER_SECOND; //Time between each frame
