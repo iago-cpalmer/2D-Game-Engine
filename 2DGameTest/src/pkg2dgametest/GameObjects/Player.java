@@ -21,12 +21,10 @@ public class Player extends GameObject{
         super();
         position.setX(0);
         position.setY(0);
-        components.add(new SpriteRenderer(1, "Images/test.png", this));
+        components.add(new SpriteRenderer(5, "Images/test.png", this));
     }
     public Player(float x, float y) {
-        super();
-        position.setX(x);
-        position.setY(y);
+        super(x, y);
         components.add(new SpriteRenderer(1, "Images/test.png", this));
     }
     @Override

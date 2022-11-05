@@ -45,7 +45,7 @@ public class SpriteRenderer extends GameComponent{
      */
     public void paintComponent(Graphics g, int x, int y) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(sprite, x, y, sprite.getWidth()*scale, sprite.getHeight()*scale, null);
+        g2d.drawImage(sprite, x, y, sprite.getWidth(), sprite.getHeight(), null);
     }
     /*
     @Override

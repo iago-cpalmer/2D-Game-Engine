@@ -5,6 +5,8 @@
 package pkg2dgametest;
 
 import java.awt.BorderLayout;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
@@ -17,6 +19,8 @@ import pkg2dgametest.Utilities.InputController;
 public class MainWindow extends JFrame implements KeyListener{
     boolean  fullScreen;
     int height, width;
+    GraphicsEnvironment graphics;
+    GraphicsDevice device;
     public MainWindow(int height, int width, boolean fullScreen) {
         this.fullScreen=fullScreen;
         this.height=height;
@@ -34,6 +38,17 @@ public class MainWindow extends JFrame implements KeyListener{
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+        
+        
+        //FullScreen mode
+        graphics =GraphicsEnvironment.getLocalGraphicsEnvironment();
+        device = graphics.getDefaultScreenDevice();
+        
+        
+        if(fullScreen) {
+            fullScreen = true;
+            device.setFullScreenWindow(this); 
+        }
     }
     
     private void initComponents() {
@@ -55,13 +70,14 @@ public class MainWindow extends JFrame implements KeyListener{
         
         //F11
         if(e.getKeyCode()==122) {
-           if(!fullScreen) {
-                setExtendedState(JFrame.MAXIMIZED_BOTH); 
-                setUndecorated(true); 
-           } else {
-                setSize(width, height);
-                setUndecorated(false); 
-           }
+            
+            if(!fullScreen) {
+                fullScreen = true;
+                device.setFullScreenWindow(this); 
+            } else {
+                device.setFullScreenWindow(null);
+                fullScreen = false;
+            }
         }
     }
 
