@@ -6,12 +6,17 @@ package pkg2dgametest.GameObjects;
 
 import pkg2dgametest.GameComponents.SpriteRenderer;
 import pkg2dgametest.GameObject;
+import pkg2dgametest.Utilities.InputController;
+import pkg2dgametest.Utilities.Time;
+import pkg2dgametest.Utilities.Vector;
 
 /**
  *
  * @author iagoc
  */
 public class Player extends GameObject{
+    float speed = 300;
+    
     public Player() {
         super();
         position.setX(0);
@@ -21,7 +26,30 @@ public class Player extends GameObject{
     @Override
     public void update() {
         super.update();
-        //System.out.println("Update player");
+        movement(); //Testing
+    }
+    /**
+     * Testing function for the movement of the player. 
+     * (WILL NOT BE IMPLEMENTED IN THE FINAL VERSION OF THE GAME ENGINE)
+     */
+    public void movement() {
+        Vector v = new Vector(0,0);
+        
+        if(InputController.isKeyPressed(InputController.getControlId("MOVE_RIGHT"))) {
+            v.addX(1);
+        }
+        if(InputController.isKeyPressed(InputController.getControlId("JUMP"))){
+            v.addY(-1);
+        }
+        
+        if(InputController.isKeyPressed(InputController.getControlId("MOVE_LEFT"))) {
+            v.addX(-1);
+        }
+        
+        v.setX((float) (v.getX()*speed*Time.deltaTime));
+        v.setY((float) (v.getY()*speed*Time.deltaTime));
+        
+        position.addVector(v);
     }
     
     @Override

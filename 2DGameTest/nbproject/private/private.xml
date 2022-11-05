@@ -3,17 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/iagoc/Documents/NetBeansProjects/2D-GameTest/2DGameTest/src/pkg2dgametest/GameComponents/GameComponent.java</file>
-            <file>file:/C:/Users/iagoc/Documents/NetBeansProjects/2D-GameTest/2DGameTest/src/pkg2dgametest/Utilities/Time.java</file>
-            <file>file:/C:/Users/iagoc/Documents/NetBeansProjects/2D-GameTest/2DGameTest/src/pkg2dgametest/Scene.java</file>
-            <file>file:/C:/Users/iagoc/Documents/NetBeansProjects/2D-GameTest/2DGameTest/src/pkg2dgametest/Main.java</file>
-            <file>file:/C:/Users/iagoc/Documents/NetBeansProjects/2D-GameTest/2DGameTest/src/pkg2dgametest/GameObject.java</file>
-            <file>file:/C:/Users/iagoc/Documents/NetBeansProjects/2D-GameTest/2DGameTest/src/pkg2dgametest/GameComponents/SpriteRenderer.java</file>
-            <file>file:/C:/Users/iagoc/Documents/NetBeansProjects/2D-GameTest/2DGameTest/src/pkg2dgametest/Scripts/World.java</file>
-            <file>file:/C:/Users/iagoc/Documents/NetBeansProjects/2D-GameTest/2DGameTest/src/pkg2dgametest/GameObjects/Player.java</file>
-            <file>file:/C:/Users/iagoc/Documents/NetBeansProjects/2D-GameTest/2DGameTest/src/pkg2dgametest/GameComponents/Position.java</file>
-            <file>file:/C:/Users/iagoc/Documents/NetBeansProjects/2D-GameTest/2DGameTest/src/pkg2dgametest/MainWindow.java</file>
-            <file>file:/C:/Users/iagoc/Documents/NetBeansProjects/2D-GameTest/2DGameTest/src/pkg2dgametest/Camera.java</file>
+            <file>file:/C:/Users/joanc/OneDrive/Documentos/NetBeansProjects/2DGameTest/2DGameTest/src/pkg2dgametest/GameObjects/Player.java</file>
+            <file>file:/C:/Users/joanc/OneDrive/Documentos/NetBeansProjects/2DGameTest/2DGameTest/src/pkg2dgametest/MainWindow.java</file>
+            <file>file:/C:/Users/joanc/OneDrive/Documentos/NetBeansProjects/2DGameTest/2DGameTest/src/pkg2dgametest/Scene.java</file>
+            <file>file:/C:/Users/joanc/OneDrive/Documentos/NetBeansProjects/2DGameTest/2DGameTest/src/pkg2dgametest/Main.java</file>
+            <file>file:/C:/Users/joanc/OneDrive/Documentos/NetBeansProjects/2DGameTest/2DGameTest/src/pkg2dgametest/Camera.java</file>
+            <file>file:/C:/Users/joanc/OneDrive/Documentos/NetBeansProjects/2DGameTest/2DGameTest/src/pkg2dgametest/GameComponents/SpriteRenderer.java</file>
         </group>
     </open-files>
 </project-private>

@@ -1,13 +1,9 @@
 package pkg2dgametest;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.util.Date;
-import javax.swing.JFrame;
-import pkg2dgametest.GameComponents.Position;
 import pkg2dgametest.Scripts.World;
 import pkg2dgametest.Utilities.InputController;
 import pkg2dgametest.Utilities.Time;
+import pkg2dgametest.Utilities.Vector;
 
 /**
  *
@@ -28,7 +24,7 @@ public class Main {
     public static void main(String[] args) {
         InputController.setupControls();
         
-        camera = new Camera(new Position(0,0), 1920, 1080);
+        camera = new Camera(new Vector(0,0), 1920, 1080);
         currentScene = new Scene("defaultScene");
         world = new World();
         
@@ -73,9 +69,9 @@ public class Main {
             }
             
             if(System.currentTimeMillis()-timer>=1000) {
-                /*
+                
                 System.out.println(frames + " FPS. " + updates + " UPS" + " - FPSDeltaTime: "+1/Time.deltaTime + 
-                        " - Timer2: " + timer2 + " - CurrentTime: "+System.currentTimeMillis());*/
+                         " - CurrentTime: "+System.currentTimeMillis());
                 frames = 0;
                 updates=0;
                 timer+=1000;

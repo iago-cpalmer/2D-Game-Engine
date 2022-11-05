@@ -5,12 +5,9 @@
 package pkg2dgametest;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import pkg2dgametest.Utilities.InputController;
 
 /**
@@ -41,18 +38,11 @@ public class MainWindow extends JFrame implements KeyListener{
     
     private void initComponents() {
         addKeyListener(this);
-        add(Main.camera,  BorderLayout.CENTER);
-        
-        setContentPane(Main.camera);
+        //add(Main.camera,  BorderLayout.CENTER);
+        add(Main.camera, BorderLayout.CENTER);
+        this.setContentPane(Main.camera);
     }
-    /*
-    @Override
-    public void repaint() {
-        super.repaint();
-        System.out.println("paint frame");
-        Main.camera.repaint();
-    }*/
-    
+
     
     @Override
     public void keyTyped(KeyEvent e) {

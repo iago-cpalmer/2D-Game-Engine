@@ -57,7 +57,7 @@ public class InputController {
      * @param id
      * @return 
      */
-    public boolean isKeyPressed(int id) {
+    public static boolean isKeyPressed(int id) {
         return keysPressed[id];
     }
     

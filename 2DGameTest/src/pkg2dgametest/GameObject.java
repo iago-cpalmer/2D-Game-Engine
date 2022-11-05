@@ -6,7 +6,7 @@ package pkg2dgametest;
 
 import pkg2dgametest.GameComponents.GameComponent;
 import java.util.ArrayList;
-import pkg2dgametest.GameComponents.Position;
+import pkg2dgametest.Utilities.Vector;
 
 /**
  *
@@ -14,15 +14,15 @@ import pkg2dgametest.GameComponents.Position;
  */
 public abstract class GameObject {
     public ArrayList<GameComponent> components;
-    public Position position;
+    public Vector position;
     
     public GameObject() {
-        position = new Position(0,0);
+        position = new Vector(0,0);
         components = new ArrayList<GameComponent>();
     }
     
     public GameObject(float x, float y) {
-        position = new Position(x, y);
+        position = new Vector(x, y);
         components = new ArrayList<GameComponent>();
     }
     
@@ -56,7 +56,7 @@ public abstract class GameObject {
         return null;
     }
     
-    public Position getPosition() {
+    public Vector getPosition() {
         return position;
     }
     public void setPosition(float x, float y) {
