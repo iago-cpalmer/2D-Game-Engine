@@ -49,4 +49,9 @@ public class Vector {
         this.x+=v.getX();
         this.y+=v.getY();
     }
+    
+    public void set(Vector v) {
+        this.x=v.getX();
+        this.y=v.getY();
+    }
 }

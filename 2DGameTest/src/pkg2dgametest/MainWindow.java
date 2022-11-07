@@ -21,15 +21,21 @@ public class MainWindow extends JFrame implements KeyListener{
     int height, width;
     GraphicsEnvironment graphics;
     GraphicsDevice device;
-    public MainWindow(int height, int width, boolean fullScreen) {
+    public MainWindow(boolean fullScreen) {
         this.fullScreen=fullScreen;
-        this.height=height;
-        this.width=width;
         initComponents();
         setLayout(new BorderLayout());
         
+        graphics =GraphicsEnvironment.getLocalGraphicsEnvironment();
+        device = graphics.getDefaultScreenDevice();
+        
+        this.height = device.getDisplayMode().getHeight();
+        this.width = device.getDisplayMode().getWidth();
+        //setSize(width, height);
+        
         setTitle("2D Game Engine");
-        setSize(width, height);
+        
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         if(fullScreen) {
             setExtendedState(JFrame.MAXIMIZED_BOTH); 
             setUndecorated(true);
@@ -41,8 +47,6 @@ public class MainWindow extends JFrame implements KeyListener{
         
         
         //FullScreen mode
-        graphics =GraphicsEnvironment.getLocalGraphicsEnvironment();
-        device = graphics.getDefaultScreenDevice();
         
         
         if(fullScreen) {
@@ -76,6 +80,7 @@ public class MainWindow extends JFrame implements KeyListener{
                 device.setFullScreenWindow(this); 
             } else {
                 device.setFullScreenWindow(null);
+                setExtendedState(JFrame.MAXIMIZED_BOTH);
                 fullScreen = false;
             }
         }
@@ -84,6 +89,14 @@ public class MainWindow extends JFrame implements KeyListener{
     @Override
     public void keyReleased(KeyEvent e) {
         InputController.setKeyState(e.getKeyChar(), false);
+    }
+    
+    public int getHeight() {
+        return this.height;
+    }
+    
+    public int getWidth() {
+        return this.width;
     }
 
 }

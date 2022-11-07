@@ -4,6 +4,7 @@
  */
 package pkg2dgametest.GameObjects;
 
+import pkg2dgametest.GameComponents.CameraBehav;
 import pkg2dgametest.GameComponents.SpriteRenderer;
 import pkg2dgametest.GameObject;
 import pkg2dgametest.Utilities.InputController;
@@ -22,10 +23,12 @@ public class Player extends GameObject{
         position.setX(0);
         position.setY(0);
         components.add(new SpriteRenderer(5, "Images/test.png", this));
+        components.add(new CameraBehav(this));
     }
     public Player(float x, float y) {
         super(x, y);
         components.add(new SpriteRenderer(1, "Images/test.png", this));
+        components.add(new CameraBehav(this));
     }
     @Override
     public void update() {

@@ -16,17 +16,13 @@ import pkg2dgametest.Utilities.Vector;
  */
 public class Camera extends JPanel{
     Vector position;
-    int width;
-    int height;
     /*
     BufferedImage[] buffers = new BufferedImage[2];
     int activeBuffer = 0;*/
     
-    public Camera(Vector position, int width, int height) {
+    public Camera(Vector position) {
         super();
         this.position=position;
-        this.width=width;
-        this.height=height;
         /*
         for(int i = 0; i < buffers.length;i++) {
             buffers[i] = (BufferedImage)createImage(1920,1080);
@@ -45,7 +41,9 @@ public class Camera extends JPanel{
             SpriteRenderer r = (SpriteRenderer)o.getComponent("SpriteRenderer");
             if(r!=null) {
                 //calculate x and y position in camera from world coords
-                r.paintComponent(g, 100 + (int)o.getPosition().getX(), 100 + (int)o.getPosition().getY());
+                int x = (int) ((o.getPosition().getX()-r.getWidth()/2) - this.position.getX());
+                int y = (int) ((o.getPosition().getY()-r.getHeight()/2) - this.position.getY());
+                r.paintComponent(g, x+this.getWidth()/2, y+this.getHeight()/2);
                 
             }
         }
@@ -58,4 +56,8 @@ public class Camera extends JPanel{
         super.repaint();
         System.out.println("Camera repaint");
     }*/
+    
+    public Vector getPosition() {
+        return position;
+    }
 }

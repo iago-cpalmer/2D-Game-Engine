@@ -13,8 +13,8 @@ public class Main {
     
     static boolean gameIsRunning = true;
     public static MainWindow mainWindow;
-    static int height = 500;
-    static int width = 500;
+    static int height = 1920;
+    static int width = 1080;
     
     public static Camera camera;
     public static Scene currentScene;
@@ -24,12 +24,12 @@ public class Main {
     public static void main(String[] args) {
         InputController.setupControls();
         
-        camera = new Camera(new Vector(0,0), 1920, 1080);
+        
         currentScene = new Scene("defaultScene");
         world = new World();
-        
-        mainWindow = new MainWindow(height, width, false);
-        
+        camera = new Camera(new Vector(0,0));
+        mainWindow = new MainWindow(false);
+        camera.setSize(mainWindow.getWidth(), mainWindow.getHeight());
         
         final int MAX_UPDATES_PER_SECOND = 10000; //UPS
         final int MAX_FRAMES_PER_SECOND = 10000; //FPS

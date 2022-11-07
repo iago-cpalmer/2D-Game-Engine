@@ -23,12 +23,12 @@ public class SpriteRenderer extends GameComponent{
     private int scale;
     private String spritePath;
     private BufferedImage sprite;
-    private GameObject gameObject;
     
-    public SpriteRenderer(int scale, String spritePath, GameObject gameObject) {
+    
+    public SpriteRenderer(int scale, String spritePath, GameObject gO) {
         this.scale = scale;
         this.spritePath = spritePath;
-        this.gameObject = gameObject;
+        gameObject = gO;
         componentName = "SpriteRenderer";
         
         try {
@@ -57,4 +57,11 @@ public class SpriteRenderer extends GameComponent{
     public void start() {
         System.out.println("Sprite Renderer start");
     }*/
+    
+    public int getWidth() {
+        return sprite.getWidth();
+    }
+    public int getHeight() {
+        return sprite.getHeight();
+    }
 }
