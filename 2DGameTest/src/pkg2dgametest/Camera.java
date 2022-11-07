@@ -41,8 +41,8 @@ public class Camera extends JPanel{
             SpriteRenderer r = (SpriteRenderer)o.getComponent("SpriteRenderer");
             if(r!=null) {
                 //calculate x and y position in camera from world coords
-                int x = (int) ((o.getPosition().getX()-r.getWidth()/2) - this.position.getX());
-                int y = (int) ((o.getPosition().getY()-r.getHeight()/2) - this.position.getY());
+                int x = (int) ((o.getPosition().getX()- (r.getWidth()*o.getScale())/2) - this.position.getX());
+                int y = (int) ((o.getPosition().getY()-(r.getHeight()*o.getScale())/2) - this.position.getY());
                 r.paintComponent(g, x+this.getWidth()/2, y+this.getHeight()/2);
                 
             }

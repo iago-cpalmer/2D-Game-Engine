@@ -16,7 +16,7 @@ public class World {
     private Player player;
     
     public World() {
-       player = new Player(300,300);
+       player = new Player(300,300, 1);
        Main.currentScene.addObject(player);
        
        TestTree tree1 = new TestTree(100,100);

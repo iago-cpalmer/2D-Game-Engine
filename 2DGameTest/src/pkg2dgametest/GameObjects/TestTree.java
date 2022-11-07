@@ -17,10 +17,12 @@ public class TestTree extends GameObject{
     
     public TestTree() {
         super();
-        components.add(new SpriteRenderer(1, "Images/testTree.png", this));
+        components.add(new SpriteRenderer("Images/testTree.png", this));
+        
     }
     public TestTree(float x, float y) {
         super(x, y);
-        components.add(new SpriteRenderer(1, "Images/testTree.png", this));
+        components.add(new SpriteRenderer("Images/testTree.png", this));
+        ((SpriteRenderer) components.get(0)).flipY(true);
     }
 }

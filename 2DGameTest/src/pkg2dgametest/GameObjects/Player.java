@@ -17,17 +17,22 @@ import pkg2dgametest.Utilities.Vector;
  */
 public class Player extends GameObject{
     float speed = 300;
-    
     public Player() {
         super();
         position.setX(0);
         position.setY(0);
-        components.add(new SpriteRenderer(5, "Images/test.png", this));
+        components.add(new SpriteRenderer("Images/test.png", this));
+        
         components.add(new CameraBehav(this));
     }
     public Player(float x, float y) {
         super(x, y);
-        components.add(new SpriteRenderer(1, "Images/test.png", this));
+        components.add(new SpriteRenderer("Images/test.png", this));
+        components.add(new CameraBehav(this));
+    }
+    public Player(float x, float y, float scale) {
+        super(x, y, scale);
+        components.add(new SpriteRenderer("Images/test.png", this));
         components.add(new CameraBehav(this));
     }
     @Override

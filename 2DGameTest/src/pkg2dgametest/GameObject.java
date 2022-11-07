@@ -15,14 +15,22 @@ import pkg2dgametest.Utilities.Vector;
 public abstract class GameObject {
     public ArrayList<GameComponent> components;
     public Vector position;
-    
+    public float scale;
     public GameObject() {
         position = new Vector(0,0);
+        scale = 1;
         components = new ArrayList<GameComponent>();
     }
     
     public GameObject(float x, float y) {
         position = new Vector(x, y);
+        scale = 1;
+        components = new ArrayList<GameComponent>();
+    }
+    
+    public GameObject(float x, float y, float scale) {
+        position = new Vector(x, y);
+        this.scale = scale;
         components = new ArrayList<GameComponent>();
     }
     
@@ -62,5 +70,12 @@ public abstract class GameObject {
     public void setPosition(float x, float y) {
         position.setX(x);
         position.setY(y);
+    }
+    
+    public float getScale() {
+        return scale;
+    }
+    public void setScale(int scale) {
+        this.scale = scale;
     }
 }

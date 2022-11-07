@@ -20,17 +20,18 @@ import pkg2dgametest.GameObject;
  * @author joanc
  */
 public class SpriteRenderer extends GameComponent{
-    private int scale;
     private String spritePath;
     private BufferedImage sprite;
     
+    int flipX;
+    int flipY;
     
-    public SpriteRenderer(int scale, String spritePath, GameObject gO) {
-        this.scale = scale;
+    public SpriteRenderer(String spritePath, GameObject gO) {
         this.spritePath = spritePath;
         gameObject = gO;
         componentName = "SpriteRenderer";
-        
+        this.flipX=1;
+        this.flipY=1;
         try {
             this.sprite=ImageIO.read(new File(spritePath));
         } catch (IOException ex) {
@@ -45,7 +46,7 @@ public class SpriteRenderer extends GameComponent{
      */
     public void paintComponent(Graphics g, int x, int y) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(sprite, x, y, sprite.getWidth(), sprite.getHeight(), null);
+        g2d.drawImage(sprite, x-flipX*sprite.getWidth(), y-flipY*sprite.getHeight(), flipX*(int) (sprite.getWidth()*gameObject.getScale()), flipY*(int)(sprite.getHeight()*gameObject.getScale()), null);
     }
     /*
     @Override
@@ -63,5 +64,12 @@ public class SpriteRenderer extends GameComponent{
     }
     public int getHeight() {
         return sprite.getHeight();
+    }
+    
+    public void flipX(boolean flipX) {
+        this.flipX = flipX ? -1:1;
+    }
+    public void flipY(boolean flipY) {
+        this.flipY = flipY ? -1:1;
     }
 }
