@@ -35,7 +35,10 @@ public class Scene{
     
     public void update() {
         for(GameObject gameObject:objects) {
-            gameObject.update();
+            if(gameObject.isActive()) {
+                gameObject.update();
+            }
+            
         }
     }
     

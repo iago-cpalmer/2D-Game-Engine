@@ -31,8 +31,8 @@ public class Main {
         mainWindow = new MainWindow(false);
         camera.setSize(mainWindow.getWidth(), mainWindow.getHeight());
         
-        final int MAX_UPDATES_PER_SECOND = 10000; //UPS
-        final int MAX_FRAMES_PER_SECOND = 10000; //FPS
+        final int MAX_UPDATES_PER_SECOND = 120; //UPS
+        final int MAX_FRAMES_PER_SECOND = 120; //FPS
         
         final double MAX_UPDATE_TIME = 1000000000/ MAX_UPDATES_PER_SECOND; //Time between each update
         final double MAX_FRAME_TIME = 1000000000/MAX_FRAMES_PER_SECOND; //Time between each frame

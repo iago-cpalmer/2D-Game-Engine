@@ -38,14 +38,17 @@ public class Camera extends JPanel{
         Graphics g2 = buffers[activeBuffer].getGraphics();
         */
         for(GameObject o:Main.currentScene.getGameObjects()) {
-            SpriteRenderer r = (SpriteRenderer)o.getComponent("SpriteRenderer");
-            if(r!=null) {
-                //calculate x and y position in camera from world coords
-                int x = (int) ((o.getPosition().getX()- (r.getWidth()*o.getScale())/2) - this.position.getX());
-                int y = (int) ((o.getPosition().getY()-(r.getHeight()*o.getScale())/2) - this.position.getY());
-                r.paintComponent(g, x+this.getWidth()/2, y+this.getHeight()/2);
-                
+            if(o.isActive()) {
+                SpriteRenderer r = (SpriteRenderer)o.getComponent("SpriteRenderer");
+                if(r!=null) {
+                    //calculate x and y position in camera from world coords
+                    int x = (int) ((o.getPosition().getX()- (r.getWidth()*o.getScale())/2) - this.position.getX());
+                    int y = (int) ((o.getPosition().getY()-(r.getHeight()*o.getScale())/2) - this.position.getY());
+                    r.paintComponent(g, x+this.getWidth()/2, y+this.getHeight()/2);
+
+                }
             }
+            
         }
         //g.drawImage(buffers[activeBuffer], 0, 0, this);
         
