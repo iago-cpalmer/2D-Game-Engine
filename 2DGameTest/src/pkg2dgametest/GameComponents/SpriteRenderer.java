@@ -46,19 +46,9 @@ public class SpriteRenderer extends GameComponent{
      */
     public void paintComponent(Graphics g, int x, int y) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(sprite, x-flipX*sprite.getWidth(), y-flipY*sprite.getHeight(), flipX*(int) (sprite.getWidth()*gameObject.getScale()), flipY*(int)(sprite.getHeight()*gameObject.getScale()), null);
+        g2d.drawImage(sprite, x-flipX*sprite.getWidth(), y-flipY*sprite.getHeight(), 
+                flipX*(int) (sprite.getWidth()*gameObject.getScale()), flipY*(int)(sprite.getHeight()*gameObject.getScale()), null);
     }
-    /*
-    @Override
-    public void update() {
-        System.out.println("Sprite Renderer update");
-    }
-    
-    @Override
-    public void start() {
-        System.out.println("Sprite Renderer start");
-    }*/
-    
     public int getWidth() {
         return sprite.getWidth();
     }
