@@ -30,7 +30,7 @@ public class InputController {
      * @param state 
      */
     public static void setKeyState(char key, boolean state) {
-        int keyId = containsAndGetId(keys, key);
+        int keyId = containsAndGetId(keys, Character.toLowerCase(key));
         if(keyId!=-1) {
             keysPressed[keyId] = state;
         }

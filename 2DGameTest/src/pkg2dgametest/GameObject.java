@@ -9,11 +9,13 @@ public abstract class GameObject {
     public Vector position;
     public float scale;
     public boolean isActive;
+    public float sortingOrder;
     public GameObject() {
         position = new Vector(0,0);
         scale = 1;
         components = new ArrayList<GameComponent>();
         isActive = true;
+        sortingOrder = 0;
     }
     
     public GameObject(float x, float y) {
@@ -82,4 +84,14 @@ public abstract class GameObject {
     public void setActive(boolean isActive) {
         this.isActive=isActive;
     }
-}
+    
+    public void setSortingOrder(float sortingOrder) {
+        Main.currentScene.removeObject(this.sortingOrder);
+        this.sortingOrder = sortingOrder;
+        Main.currentScene.addObject(this);
+    }
+    
+    public float getSortingOrder() {
+        return this.sortingOrder;
+    }
+} 

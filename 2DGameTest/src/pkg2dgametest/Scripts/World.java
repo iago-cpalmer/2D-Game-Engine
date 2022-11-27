@@ -11,6 +11,7 @@ public class World {
     public World() {
        player = new Player(300,300, 1);
        Main.currentScene.addObject(player);
+       
        TestTree tree1 = new TestTree(100,100);
        Main.currentScene.addObject(tree1);
        
@@ -22,7 +23,7 @@ public class World {
        
        // Stress test
        /*
-       for(int i = 0; i < 10000; i++) {
+       for(int i = 0; i < 1000; i++) {
            TestTree tree = new TestTree(100+i*10, 100+i*10);
            Main.currentScene.addObject(tree);
        }*/
