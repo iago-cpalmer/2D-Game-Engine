@@ -5,10 +5,6 @@ import pkg2dgametest.Utilities.InputController;
 import pkg2dgametest.Utilities.Time;
 import pkg2dgametest.Utilities.Vector;
 
-/**
- *
- * @author iagoc
- */
 public class Main {
     
     static boolean gameIsRunning = true;

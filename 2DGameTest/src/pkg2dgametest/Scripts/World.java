@@ -9,10 +9,6 @@ import pkg2dgametest.GameObjects.Player;
 import pkg2dgametest.GameObjects.TestTree;
 import pkg2dgametest.Main;
 
-/**
- *
- * @author iagoc
- */
 public class World {
     private Player player;
     

@@ -4,10 +4,6 @@
  */
 package pkg2dgametest.Utilities;
 
-/**
- *
- * @author iagoc
- */
 public class Time {
     public static double deltaTime = 0.0f;
 }

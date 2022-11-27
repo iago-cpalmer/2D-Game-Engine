@@ -8,10 +8,6 @@ import pkg2dgametest.GameComponents.GameComponent;
 import java.util.ArrayList;
 import pkg2dgametest.Utilities.Vector;
 
-/**
- *
- * @author joanc
- */
 public abstract class GameObject {
     public ArrayList<GameComponent> components;
     public Vector position;

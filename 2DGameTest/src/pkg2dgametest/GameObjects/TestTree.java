@@ -8,10 +8,6 @@ import pkg2dgametest.GameComponents.SpriteRenderer;
 import pkg2dgametest.GameObject;
 import pkg2dgametest.Utilities.Vector;
 
-/**
- *
- * @author joanc
- */
 
 public class TestTree extends GameObject{
     

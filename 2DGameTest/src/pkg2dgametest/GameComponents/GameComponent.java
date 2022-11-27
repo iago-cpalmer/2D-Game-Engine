@@ -5,11 +5,6 @@
 package pkg2dgametest.GameComponents;
 
 import pkg2dgametest.GameObject;
-
-/**
- *
- * @author joanc
- */
 public abstract class GameComponent {
     String componentName = "GameComponent";
     GameObject gameObject;

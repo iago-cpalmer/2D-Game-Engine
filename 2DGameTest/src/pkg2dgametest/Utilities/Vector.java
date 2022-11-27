@@ -4,10 +4,6 @@
  */
 package pkg2dgametest.Utilities;
 
-/**
- *
- * @author joanc
- */
 public class Vector {
     private float x;
     private float y;

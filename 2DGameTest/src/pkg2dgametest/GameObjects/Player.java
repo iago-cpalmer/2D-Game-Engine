@@ -11,10 +11,6 @@ import pkg2dgametest.Utilities.InputController;
 import pkg2dgametest.Utilities.Time;
 import pkg2dgametest.Utilities.Vector;
 
-/**
- *
- * @author iagoc
- */
 public class Player extends GameObject{
     float speed = 300;
     public Player() {

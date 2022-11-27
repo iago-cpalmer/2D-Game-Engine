@@ -11,10 +11,6 @@ import javax.swing.JPanel;
 import pkg2dgametest.GameObjects.Player;
 import pkg2dgametest.Scripts.World;
 
-/**
- *
- * @author joanc
- */
 public class Scene{
     private ArrayList<GameObject> objects;
     private String sceneName;

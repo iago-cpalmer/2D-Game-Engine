@@ -5,11 +5,6 @@
 package pkg2dgametest.Utilities;
 
 import java.util.HashMap;
-
-/**
- *
- * @author iagoc
- */
 public class InputController {
     
     static final int N_CONTROLS = 4;

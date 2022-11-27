@@ -15,10 +15,6 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import pkg2dgametest.GameObject;
 
-/**
- *
- * @author joanc
- */
 public class SpriteRenderer extends GameComponent{
     private String spritePath;
     private BufferedImage sprite;

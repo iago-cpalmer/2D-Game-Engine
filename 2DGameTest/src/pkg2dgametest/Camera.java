@@ -10,10 +10,6 @@ import javax.swing.JPanel;
 import pkg2dgametest.GameComponents.SpriteRenderer;
 import pkg2dgametest.Utilities.Vector;
 
-/**
- *
- * @author joanc
- */
 public class Camera extends JPanel{
     Vector position;
     Vector size;
