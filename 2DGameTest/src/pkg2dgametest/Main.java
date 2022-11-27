@@ -69,9 +69,9 @@ public class Main {
             }
             
             if(System.currentTimeMillis()-timer>=1000) {
-                /*
+                
                 System.out.println(frames + " FPS. " + updates + " UPS" + " - FPSDeltaTime: "+1/Time.deltaTime + 
-                         " - CurrentTime: "+System.currentTimeMillis());*/
+                         " - CurrentTime: "+System.currentTimeMillis());
                 frames = 0;
                 updates=0;
                 timer+=1000;

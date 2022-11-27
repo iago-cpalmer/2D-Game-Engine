@@ -42,7 +42,6 @@ public class Camera extends JPanel{
         float scaleFactorX = this.getWidth()/size.getX();
         float scaleFactorY = this.getHeight()/size.getY();
         float scale = Math.min(scaleFactorY, scaleFactorX);
-        System.out.println(this.getWidth() + " - " + this.getHeight());
         for(GameObject o:Main.currentScene.getGameObjects()) {
             if(o.isActive()) {
                 if(o.getPosition().getX() >= position.getX()-(this.getWidth()/2+500) && 
