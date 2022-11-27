@@ -27,7 +27,7 @@ public class Main {
         
         currentScene = new Scene("defaultScene");
         world = new World();
-        camera = new Camera(new Vector(0,0));
+        camera = new Camera(new Vector(0,0), new Vector(1920,1080));
         mainWindow = new MainWindow(false);
         camera.setSize(mainWindow.getWidth(), mainWindow.getHeight());
         
@@ -69,9 +69,9 @@ public class Main {
             }
             
             if(System.currentTimeMillis()-timer>=1000) {
-                
+                /*
                 System.out.println(frames + " FPS. " + updates + " UPS" + " - FPSDeltaTime: "+1/Time.deltaTime + 
-                         " - CurrentTime: "+System.currentTimeMillis());
+                         " - CurrentTime: "+System.currentTimeMillis());*/
                 frames = 0;
                 updates=0;
                 timer+=1000;

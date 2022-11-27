@@ -16,13 +16,15 @@ import pkg2dgametest.Utilities.Vector;
  */
 public class Camera extends JPanel{
     Vector position;
+    Vector size;
     /*
     BufferedImage[] buffers = new BufferedImage[2];
     int activeBuffer = 0;*/
     
-    public Camera(Vector position) {
+    public Camera(Vector position, Vector size) {
         super();
         this.position=position;
+        this.size = size;
         /*
         for(int i = 0; i < buffers.length;i++) {
             buffers[i] = (BufferedImage)createImage(1920,1080);
@@ -37,19 +39,30 @@ public class Camera extends JPanel{
         buffers[activeBuffer] = (BufferedImage)createImage(1920,1080);
         Graphics g2 = buffers[activeBuffer].getGraphics();
         */
+        float scaleFactorX = this.getWidth()/size.getX();
+        float scaleFactorY = this.getHeight()/size.getY();
+        float scale = Math.min(scaleFactorY, scaleFactorX);
+        System.out.println(this.getWidth() + " - " + this.getHeight());
         for(GameObject o:Main.currentScene.getGameObjects()) {
             if(o.isActive()) {
-                SpriteRenderer r = (SpriteRenderer)o.getComponent("SpriteRenderer");
-                if(r!=null) {
-                    //calculate x and y position in camera from world coords
-                    int x = (int) ((o.getPosition().getX()- (r.getWidth()*o.getScale())/2) - this.position.getX());
-                    int y = (int) ((o.getPosition().getY()-(r.getHeight()*o.getScale())/2) - this.position.getY());
-                    r.paintComponent(g, x+this.getWidth()/2, y+this.getHeight()/2);
+                if(o.getPosition().getX() >= position.getX()-(this.getWidth()/2+500) && 
+                        o.getPosition().getX() < position.getX()+(this.getWidth()/2+500) &&
+                        o.getPosition().getY() >= position.getY()-(this.getHeight()/2+500) &&
+                        o.getPosition().getY() < position.getY()+(this.getHeight()/2+500)) {
+                    SpriteRenderer r = (SpriteRenderer)o.getComponent("SpriteRenderer");
+                    if(r!=null) {
+                        //calculate x and y position in camera from world coords
+                        int x = (int) ((o.getPosition().getX()- (r.getWidth()*o.getScale())/2) - this.position.getX());
+                        int y = (int) ((o.getPosition().getY()-(r.getHeight()*o.getScale())/2) - this.position.getY());
+                        r.paintComponent(g, (int) (x+size.getX()/2), (int) (y+size.getY()/2), scale);
 
+                    }
                 }
+                
             }
             
         }
+       
         //g.drawImage(buffers[activeBuffer], 0, 0, this);
         
     }
@@ -62,5 +75,9 @@ public class Camera extends JPanel{
     
     public Vector getPosition() {
         return position;
+    }
+    
+    public Vector getCameraSize() {
+        return size;
     }
 }

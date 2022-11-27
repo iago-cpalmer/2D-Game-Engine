@@ -23,6 +23,5 @@ public class TestTree extends GameObject{
     public TestTree(float x, float y) {
         super(x, y);
         components.add(new SpriteRenderer("Images/testTree.png", this));
-        ((SpriteRenderer) components.get(0)).flipY(true);
     }
 }
