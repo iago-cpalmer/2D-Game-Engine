@@ -3,6 +3,7 @@ package pkg2dgametest.GameComponents;
 import pkg2dgametest.GameComponents.GameComponent;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -38,8 +39,6 @@ public class SpriteRenderer extends GameComponent{
      */
     public void paintComponent(Graphics g, int x, int y, float scaleCamera) {
         Graphics2D g2d = (Graphics2D) g;
-        /*g2d.drawImage(sprite, x-flipX*sprite.getWidth(), y-flipY*sprite.getHeight(), 
-                flipX*(int) (sprite.getWidth()*gameObject.getScale()), flipY*(int)(sprite.getHeight()*gameObject.getScale()), null);*/
         int xf, yf, width, height;
         if(flipX) {
             xf= (int) (x+sprite.getWidth()*gameObject.getScale());
@@ -56,9 +55,12 @@ public class SpriteRenderer extends GameComponent{
             yf = (int) (y);
             height = (int) (sprite.getHeight()*gameObject.getScale());
         }
+        AffineTransform at = new AffineTransform();
+        at.rotate(Math.toRadians(gameObject.getRotation()), xf, yf);
+        g2d.setTransform(at);
         
-        g2d.drawImage(sprite, (int) (xf * scaleCamera), (int) ( yf * scaleCamera), 
-                (int) (width * scaleCamera), (int) (height * scaleCamera), null);
+        g2d.drawImage(sprite, (int) (xf*scaleCamera), (int) ( yf*scaleCamera), 
+                (int) (width*scaleCamera), (int) (height*scaleCamera), null);
     }
     public int getWidth() {
         return sprite.getWidth();

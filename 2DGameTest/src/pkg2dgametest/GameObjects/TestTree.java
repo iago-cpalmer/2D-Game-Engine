@@ -12,8 +12,14 @@ public class TestTree extends GameObject{
         components.add(new SpriteRenderer("Images/testTree.png", this));
         
     }
-    public TestTree(float x, float y) {
-        super(x, y);
+    public TestTree(float x, float y, float xr) {
+        super(x, y, xr);
         components.add(new SpriteRenderer("Images/testTree.png", this));
     }
+    @Override
+    public void update(){
+        //this.setRotation(this.getRotation()+1);
+        System.out.println("Rotation: " + this.getRotation());
+    }
+    
 }

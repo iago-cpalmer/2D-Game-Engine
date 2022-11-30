@@ -5,10 +5,12 @@ import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import pkg2dgametest.Utilities.InputController;
 
-public class MainWindow extends JFrame implements KeyListener{
+public class MainWindow extends JFrame implements KeyListener, MouseListener{
     boolean  fullScreen;
     int height, width;
     GraphicsEnvironment graphics;
@@ -49,6 +51,7 @@ public class MainWindow extends JFrame implements KeyListener{
     
     private void initComponents() {
         addKeyListener(this);
+        addMouseListener(this);
         //add(Main.camera,  BorderLayout.CENTER);
         add(Main.camera, BorderLayout.CENTER);
         this.setContentPane(Main.camera);
@@ -89,6 +92,51 @@ public class MainWindow extends JFrame implements KeyListener{
     
     public int getWidth() {
         return this.width;
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+       
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        switch(e.getButton()) {
+            case MouseEvent.BUTTON1:
+                InputController.setMousePressedState(0, true);
+                break;
+            case MouseEvent.BUTTON2:
+                InputController.setMousePressedState(1, true);
+                break;
+            case MouseEvent.BUTTON3:
+                InputController.setMousePressedState(2, true);
+                break;       
+        }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        switch(e.getButton()) {
+            case MouseEvent.BUTTON1:
+                InputController.setMouseReleasedState(0, true);
+                break;
+            case MouseEvent.BUTTON2:
+                InputController.setMouseReleasedState(1, true);
+                break;
+            case MouseEvent.BUTTON3:
+                InputController.setMouseReleasedState(2, true);
+                break;       
+        }
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

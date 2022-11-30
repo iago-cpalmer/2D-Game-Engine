@@ -11,26 +11,35 @@ public class Player extends GameObject{
     float speed = 300;
     public Player() {
         super();
-        position.setX(0);
-        position.setY(0);
-        components.add(new SpriteRenderer("Images/test.png", this));
-        
-        components.add(new CameraBehav(this));
-    }
-    public Player(float x, float y) {
-        super(x, y);
         components.add(new SpriteRenderer("Images/test.png", this));
         components.add(new CameraBehav(this));
     }
-    public Player(float x, float y, float scale) {
-        super(x, y, scale);
+    public Player(float xp, float yp, float xr) {
+        super(xp, yp, xr);
+        components.add(new SpriteRenderer("Images/test.png", this));
+        components.add(new CameraBehav(this));
+    }
+    public Player(float xp, float yp, float xr, float scale) {
+        super(xp, yp, xr, scale);
         components.add(new SpriteRenderer("Images/test.png", this));
         components.add(new CameraBehav(this));
     }
     @Override
     public void update() {
         super.update();
+        
+        if(InputController.isMousePressed(0)) {
+            System.out.println("pressed");
+        }
+        
+        if(InputController.isMouseReleased(0)) {
+            System.out.println("released");
+        }
+        
         movement(); //Testing
+        
+        
+        
     }
     /**
      * Testing function for the movement of the player. 
@@ -59,7 +68,6 @@ public class Player extends GameObject{
     @Override
     public void start() {
         super.start();
-        //System.out.println("Start player");
     }
     
 }

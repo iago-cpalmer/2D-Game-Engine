@@ -1,6 +1,10 @@
 package pkg2dgametest.Utilities;
 
+import java.awt.MouseInfo;
+import java.awt.Point;
 import java.util.HashMap;
+import javax.swing.SwingUtilities;
+import pkg2dgametest.Main;
 public class InputController {
     
     static final int N_CONTROLS = 4;
@@ -10,7 +14,7 @@ public class InputController {
     static boolean[] keysPressed = new boolean[N_CONTROLS]; //check if a key is pressed through id
     
     static boolean[] mousePressed = new boolean[3]; //left, middle, right
-    
+    static boolean[] mouseReleased = new boolean[3]; //left, middle, right
     public static void setupControls() {
         //Set-up controlNames with his ID;
         for(int i = 0; i < controlNames.length; i++) {
@@ -35,6 +39,15 @@ public class InputController {
             keysPressed[keyId] = state;
         }
     }
+    
+    public static void setMousePressedState(int mouseButtonId, boolean state) {
+        mousePressed[mouseButtonId] = state;
+    }
+    
+        public static void setMouseReleasedState(int mouseButtonId, boolean state) {
+        mouseReleased[mouseButtonId] = state;
+    }
+    
     /**
      * Get key id of a character
      * @param c
@@ -63,8 +76,12 @@ public class InputController {
      * @param mouseButtonId
      * @return 
      */
-    public boolean isMouseClicked(short mouseButtonId) {
+    public static boolean isMousePressed(int mouseButtonId) {
         return mousePressed[mouseButtonId];
+    }
+    
+    public static boolean isMouseReleased(int mouseButtonId) {
+        return mouseReleased[mouseButtonId];
     }
     
     
@@ -75,5 +92,11 @@ public class InputController {
             }
         }
         return -1;
+    }
+    
+    public static Vector getMousePosition() {
+        Point point = MouseInfo.getPointerInfo().getLocation();
+        SwingUtilities.convertPointFromScreen(point, Main.mainWindow);
+        return new Vector( (float) point.getX(), (float)point.getY());
     }
 }

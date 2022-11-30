@@ -47,14 +47,22 @@ public class Main {
             frameDeltaTime+=elapsedTime;
             Time.deltaTime = updateDeltaTime/1000000000;
             prevTime = currentTime;
-            //get user input
+            
             
             //update game state
-
             if(updateDeltaTime > MAX_UPDATE_TIME) {
                 currentScene.update();
                 updateDeltaTime -= MAX_UPDATE_TIME;
                 updates++;
+                
+                //reset mouse states
+                InputController.setMousePressedState(0, false);
+                InputController.setMousePressedState(1, false);
+                InputController.setMousePressedState(2, false);
+
+                InputController.setMouseReleasedState(0, false);
+                InputController.setMouseReleasedState(1, false);
+                InputController.setMouseReleasedState(2, false);
             }
                        
             //render
@@ -66,12 +74,13 @@ public class Main {
             
             if(System.currentTimeMillis()-timer>=1000) {
                 
-                System.out.println(frames + " FPS. " + updates + " UPS" + " - FPSDeltaTime: "+1/Time.deltaTime + 
-                         " - CurrentTime: "+System.currentTimeMillis());
+                /*System.out.println(frames + " FPS. " + updates + " UPS" + " - FPSDeltaTime: "+1/Time.deltaTime + 
+                         " - CurrentTime: "+System.currentTimeMillis());*/
                 frames = 0;
                 updates=0;
                 timer+=1000;
             }
+            
             
             
             

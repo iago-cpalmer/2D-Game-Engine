@@ -7,26 +7,31 @@ import pkg2dgametest.Utilities.Vector;
 public abstract class GameObject {
     public ArrayList<GameComponent> components;
     public Vector position;
+    public float rotation;
     public float scale;
     public boolean isActive;
     public float sortingOrder;
+    
     public GameObject() {
         position = new Vector(0,0);
+        rotation = 0f;
         scale = 1;
         components = new ArrayList<GameComponent>();
         isActive = true;
         sortingOrder = 0;
     }
     
-    public GameObject(float x, float y) {
-        position = new Vector(x, y);
+    public GameObject(float xp, float yp, float xr) {
+        position = new Vector(xp, yp);
+        rotation = xr;
         scale = 1;
         components = new ArrayList<GameComponent>();
         isActive = true;
     }
     
-    public GameObject(float x, float y, float scale) {
-        position = new Vector(x, y);
+    public GameObject(float xp, float yp, float xr, float scale) {
+        position = new Vector(xp,yp);
+        rotation = xr;
         this.scale = scale;
         components = new ArrayList<GameComponent>();
         isActive=true;
@@ -68,6 +73,13 @@ public abstract class GameObject {
     public void setPosition(float x, float y) {
         position.setX(x);
         position.setY(y);
+    }
+    
+    public float getRotation() {
+        return rotation;
+    }
+    public void setRotation(float x) {
+        rotation = x%360;
     }
     
     public float getScale() {
