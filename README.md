@@ -9,6 +9,7 @@ Small features & Bugs to fix:
 
 Upcoming big features (this does not include bug fixes):
 - Debugging tools
+- Create documentation
 - Collision System
 - Animation System
 - Particle System
