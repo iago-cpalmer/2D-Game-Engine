@@ -8,6 +8,7 @@ Small features & Bugs to fix:
 - Bug: in some CPUs the DeltaTime does not match the expected value.
 
 Upcoming big features (this does not include bug fixes):
+- Debugging tools
 - Collision System
 - Animation System
 - Particle System
@@ -16,6 +17,6 @@ Upcoming big features (this does not include bug fixes):
 - Dynamic 2D Lighting
 - Post-processing effects
 - Shaders
-- Debugging tools
+
 
 
