@@ -8,21 +8,15 @@ import utilities.Vector;
 import gameEngine.GameObject;
 
 public class Player extends GameObject{
-    private float speed = 30;
+    private float speed = 300;
     public Player() {
         super();
-        components.add(new SpriteRenderer("Images/test.png", this));
-        components.add(new CameraBehav(this));
     }
     public Player(float xp, float yp, float xr) {
         super(xp, yp, xr);
-        components.add(new SpriteRenderer("Images/test.png", this));
-        components.add(new CameraBehav(this));
     }
     public Player(float xp, float yp, float xr, float scale) {
         super(xp, yp, xr, scale);
-        components.add(new SpriteRenderer("Images/test.png", this));
-        components.add(new CameraBehav(this));
     }
     @Override
     public void update() {
@@ -39,6 +33,12 @@ public class Player extends GameObject{
         
         
         
+    }
+    @Override
+    public void loadComponents() {
+    	System.out.println("Player components added");
+    	addComponent(new SpriteRenderer("Images/test.png", this));
+        addComponent(new CameraBehav(this));
     }
     /**
      * Testing function for the movement of the player. 

@@ -8,13 +8,16 @@ import gameEngine.GameObject;
 public class TestTree extends GameObject{
     
     public TestTree() {
-        super();
-        components.add(new SpriteRenderer("Images/testTree.png", this));
-        
+        super();        
     }
     public TestTree(float x, float y, float xr) {
         super(x, y, xr);
-        components.add(new SpriteRenderer("Images/testTree.png", this));
+    }
+    
+    @Override
+    public void loadComponents() {
+    	System.out.println("Tree components added");
+    	addComponent((new SpriteRenderer("Images/testTree.png", this)));
     }
     @Override
     public void update(){

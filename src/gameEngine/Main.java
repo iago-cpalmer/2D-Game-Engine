@@ -9,8 +9,6 @@ public class Main {
     
     static boolean gameIsRunning = true;
     public static MainWindow mainWindow;
-    static int height = 1920;
-    static int width = 1080;
     
     public static Camera camera;
     public static Scene currentScene;
@@ -23,7 +21,7 @@ public class Main {
         
         currentScene = new Scene("defaultScene");
         world = new World();
-        camera = new Camera(new Vector(0,0), new Vector(1920,1080));
+        camera = new Camera(new Vector(0,0), new Vector(1920,1080), 4.0f);
         mainWindow = new MainWindow(false);
         camera.setSize(mainWindow.getWidth(), mainWindow.getHeight());
         

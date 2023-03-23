@@ -2,11 +2,12 @@ package gameEngine;
 
 import gameComponents.GameComponent;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import utilities.Vector;
 
 public abstract class GameObject {
-    public ArrayList<GameComponent> components;
+    public HashMap<String, GameComponent> components;
     public Vector position;
     public float rotation;
     public float scale;
@@ -17,55 +18,47 @@ public abstract class GameObject {
         position = new Vector(0,0);
         rotation = 0f;
         scale = 1;
-        components = new ArrayList<GameComponent>();
+        components = new HashMap<>();
         isActive = true;
         sortingOrder = 0;
+        loadComponents();
     }
     
     public GameObject(float xp, float yp, float xr) {
         position = new Vector(xp, yp);
         rotation = xr;
         scale = 1;
-        components = new ArrayList<GameComponent>();
+        components =  new HashMap<>();
         isActive = true;
+        loadComponents();
     }
     
     public GameObject(float xp, float yp, float xr, float scale) {
         position = new Vector(xp,yp);
         rotation = xr;
         this.scale = scale;
-        components = new ArrayList<GameComponent>();
+        components =  new HashMap<>();
         isActive=true;
+        loadComponents();
     }
     
-    
-    public ArrayList<GameComponent> getGameComponents() {
-        return components;
-    }
     
     public void update() {
-        for(GameComponent g:components) {
-            g.update();
-        }
+    	components.forEach((key, value) -> value.update());
     }
     
+    public abstract void loadComponents();
+    
     public void start() {
-        for(GameComponent g:components) {
-            g.start();
-        }
+    	components.forEach((key, value) -> value.start());
     }
     
     public void addComponent(GameComponent gc) {
-        components.add(gc);
+        components.put(gc.getComponentName(), gc);
     }
     
     public GameComponent getComponent(String gameComponentName) {
-        for(GameComponent g:components) {
-            if(g.getComponentName().equals(gameComponentName)) {
-                return g;
-            }
-        }
-        return null;
+        return components.get(gameComponentName);
     }
     
     public Vector getPosition() {
