@@ -20,6 +20,10 @@ public class World {
        TestTree tree3 = new TestTree(400,400, 0f);
        Main.currentScene.addObject(tree3);
        
+       
+       CenterOfWorld center = new CenterOfWorld();
+       Main.currentScene.addObject(center);
+       
        // Stress test
        /*
        for(int i = 0; i < 1000; i++) {

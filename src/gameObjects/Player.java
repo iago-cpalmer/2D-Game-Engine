@@ -11,12 +11,15 @@ public class Player extends GameObject{
     private float speed = 300;
     public Player() {
         super();
+        this.setPivot(0.5f, 0.5f);
     }
     public Player(float xp, float yp, float xr) {
         super(xp, yp, xr);
+        this.setPivot(0.5f, 0.5f);
     }
     public Player(float xp, float yp, float xr, float scale) {
         super(xp, yp, xr, scale);
+        this.setPivot(0.5f, 0.5f);
     }
     @Override
     public void update() {

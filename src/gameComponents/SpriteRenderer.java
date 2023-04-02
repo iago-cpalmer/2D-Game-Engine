@@ -1,5 +1,6 @@
 package gameComponents;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
@@ -54,12 +55,15 @@ public class SpriteRenderer extends GameComponent{
             yf = (int) (y);
             height = (int) (sprite.getHeight()*gameObject.getScale());
         }
-        AffineTransform at = new AffineTransform();
-        at.rotate(Math.toRadians(gameObject.getRotation()), xf, yf);
-        g2d.setTransform(at);
         
-        g2d.drawImage(sprite, (int) (xf*scaleCamera), (int) ( yf*scaleCamera), 
+        //AffineTransform at = new AffineTransform();
+        //g2d.rotate(Math.toRadians(gameObject.getRotation()), xf, yf);
+        
+        g2d.drawImage(sprite, (int) (xf*scaleCamera), (int) ( yf*scaleCamera) , 
                 (int) (width*scaleCamera), (int) (height*scaleCamera), null);
+        g2d.setColor(Color.RED);
+        g2d.fillOval((int) ((xf)*scaleCamera)-5, 
+        		(int) (yf*scaleCamera -5), 10, 10);
     }
     public int getWidth() {
         return sprite.getWidth();

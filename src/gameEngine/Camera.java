@@ -42,7 +42,6 @@ public class Camera extends JPanel{
         Graphics g2 = buffers[activeBuffer].getGraphics();
         // Paint on buffer
         super.paintComponent(g2);
-        g2.setColor(Color.black);
         
         // Calculate the scaling factor
         
@@ -50,7 +49,7 @@ public class Camera extends JPanel{
         float scaleFactorY = this.getHeight()/size.getY();
         float scale = Math.min(scaleFactorY, scaleFactorX);
         
-        g2.fillRect(0, 0, (int) (size.getX()*scale), (int)(size.getY()*scale));
+
         
         // Draw all GameObjects in the current scene
         for(GameObject o:Main.currentScene.getGameObjects()) {
@@ -65,8 +64,8 @@ public class Camera extends JPanel{
                     
                     if(r!=null) {
                         //calculate x and y position in camera from world coords
-                        int x = (int) ((o.getPosition().getX()- (r.getWidth()*o.getScale())/2) - this.position.getX());
-                        int y = (int) ((o.getPosition().getY()-(r.getHeight()*o.getScale())/2) - this.position.getY());
+                        int x = (int) ((o.getPosition().getX()- (r.getWidth()*o.getScale())*o.getPivot().getX()) - this.position.getX());
+                        int y = (int) ((o.getPosition().getY()-(r.getHeight()*o.getScale())*o.getPivot().getY()) - this.position.getY());
                         r.paintComponent(g2, (int) (x+size.getX()/2), (int) (y+size.getY()/2), scale);
 
                     }
@@ -76,9 +75,14 @@ public class Camera extends JPanel{
             
         }
        // Draw the buffer
+        //g2.setColor(Color.RED);
+        //g2.fillOval((int) (this.getWidth()/2-10), (int) (this.getHeight()/2-10), 10,10);
+        
         g.drawImage(buffers[activeBuffer], 0, 0, this);
         
     }
+    
+
     
     public Vector getPosition() {
         return position;

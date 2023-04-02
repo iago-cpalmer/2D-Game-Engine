@@ -21,8 +21,8 @@ public class TestTree extends GameObject{
     }
     @Override
     public void update(){
-        //this.setRotation(this.getRotation()+1);
-        //System.out.println("Rotation: " + this.getRotation());
+        //this.setRotation((this.getRotation()+0.5f)%360);
+        System.out.println("Rotation: " + this.getRotation());
     	//System.out.println("holaaa");
     }
     

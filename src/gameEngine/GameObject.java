@@ -12,6 +12,7 @@ public abstract class GameObject {
     public float rotation;
     public float scale;
     public boolean isActive;
+    public Vector pivot;
     public float sortingOrder;
     
     public GameObject() {
@@ -21,6 +22,7 @@ public abstract class GameObject {
         components = new HashMap<>();
         isActive = true;
         sortingOrder = 0;
+        this.pivot = new Vector(0.0f, 0.0f);
         loadComponents();
     }
     
@@ -30,6 +32,7 @@ public abstract class GameObject {
         scale = 1;
         components =  new HashMap<>();
         isActive = true;
+        this.pivot = new Vector(0.0f, 0.0f);
         loadComponents();
     }
     
@@ -39,8 +42,10 @@ public abstract class GameObject {
         this.scale = scale;
         components =  new HashMap<>();
         isActive=true;
+        this.pivot = new Vector(0.0f, 0.0f);
         loadComponents();
     }
+    
     
     
     public void update() {
@@ -74,6 +79,14 @@ public abstract class GameObject {
     }
     public void setRotation(float x) {
         rotation = x%360;
+    }
+    
+    public void setPivot(float x, float y) {
+    	this.pivot.set(x, y);
+    }
+    
+    public Vector getPivot() {
+    	return this.pivot;
     }
     
     public float getScale() {

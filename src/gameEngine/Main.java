@@ -21,7 +21,7 @@ public class Main {
         
         currentScene = new Scene("defaultScene");
         world = new World();
-        camera = new Camera(new Vector(0,0), new Vector(1920,1080), 4.0f);
+        camera = new Camera(new Vector(0,0), new Vector(1920,1080), 1.0f);
         mainWindow = new MainWindow(false);
         camera.setSize(mainWindow.getWidth(), mainWindow.getHeight());
         
