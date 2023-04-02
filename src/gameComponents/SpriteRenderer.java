@@ -42,31 +42,38 @@ public class SpriteRenderer extends GameComponent{
         Graphics2D g2d = (Graphics2D) g;
         int xf, yf, width, height;
         if(flipX) {
-            xf= (int) (x+sprite.getWidth()*gameObject.getScale());
-            width = (int) (-sprite.getWidth()*gameObject.getScale());
+            xf= (int) (x+sprite.getWidth()*gameObject.getScale()*scaleCamera);
+            width = (int) (-sprite.getWidth()*gameObject.getScale()*scaleCamera);
         } else {
-            xf= (int) (x);
-            width = (int) (sprite.getWidth()*gameObject.getScale());
+            xf= (int) (x*scaleCamera);
+            width = (int) (sprite.getWidth()*gameObject.getScale()*scaleCamera);
         }
         
         if(flipY) {
-            yf = (int) (y+sprite.getHeight()*gameObject.getScale());
-            height = (int) (-sprite.getHeight()*gameObject.getScale());
+            yf = (int) (y+sprite.getHeight()*gameObject.getScale()*scaleCamera);
+            height = (int) (-sprite.getHeight()*gameObject.getScale()*scaleCamera);
         } else {
-            yf = (int) (y);
-            height = (int) (sprite.getHeight()*gameObject.getScale());
+            yf = (int) (y*scaleCamera);
+            height = (int) (sprite.getHeight()*gameObject.getScale()*scaleCamera);
         }
         
-        //AffineTransform at = new AffineTransform();
-        //g2d.rotate(Math.toRadians(gameObject.getRotation()), xf, yf);
+        AffineTransform old = g2d.getTransform();
+        g2d.rotate(Math.toRadians(gameObject.getRotation()), 
+        		(xf)+(gameObject.getPivot().getX()*width),
+        		(yf+(gameObject.getPivot().getY()*height)));
+       
         
-        g2d.drawImage(sprite, (int) (xf*scaleCamera), (int) ( yf*scaleCamera) , 
-                (int) (width*scaleCamera), (int) (height*scaleCamera), null);
+        g2d.drawImage(sprite, (int) (xf), (int) ( yf) , 
+                (int) (width), (int) (height), null);
+        g2d.setTransform(old);
         
         if(Main.DEBUG_MODE == 1) {
+        	g2d.setColor(Color.BLUE);
+        	g2d.drawRect((int) (xf),(int) (yf), (int) (width), (int) (height));
+        	
         	g2d.setColor(Color.RED);
-            g2d.fillOval((int) ((xf)*scaleCamera+scaleCamera*(gameObject.getPivot().getX()*sprite.getWidth()))-5, 
-            		(int) (yf*scaleCamera + scaleCamera*(gameObject.getPivot().getY()*sprite.getHeight()) -5), 10, 10);
+            g2d.fillOval((int) ((xf)+(gameObject.getPivot().getX()*width))-5, 
+            		(int) (yf + (gameObject.getPivot().getY()*height) -5), 10, 10);
         }
         
     }
