@@ -16,7 +16,6 @@ public class TestTree extends GameObject{
     
     @Override
     public void loadComponents() {
-    	System.out.println("Tree components added");
     	addComponent((new SpriteRenderer("Images/testTree.png", this)));
     }
     @Override
@@ -27,6 +26,6 @@ public class TestTree extends GameObject{
     }
     
     public void start() {
-    	System.out.println("Tree start");
+    	
     }
 }

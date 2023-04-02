@@ -39,7 +39,6 @@ public class Player extends GameObject{
     }
     @Override
     public void loadComponents() {
-    	System.out.println("Player components added");
     	addComponent(new SpriteRenderer("Images/test.png", this));
         addComponent(new CameraBehav(this));
     }
