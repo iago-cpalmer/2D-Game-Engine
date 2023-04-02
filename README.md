@@ -4,7 +4,6 @@
 This project is currently under development.
 
 Small features & Bugs to fix:
-- Add rotation pivot to GameObject
 - Bug: in some CPUs the DeltaTime does not match the expected value.
 - Bug: some screens do not allow Full Screen Mode.
 
