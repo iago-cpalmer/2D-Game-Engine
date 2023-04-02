@@ -53,12 +53,15 @@ public class Player extends GameObject{
         if(InputController.isKeyPressed(InputController.getControlId("MOVE_RIGHT"))) {
             v.addX(1);
         }
-        if(InputController.isKeyPressed(InputController.getControlId("JUMP"))){
+        if(InputController.isKeyPressed(InputController.getControlId("MOVE_UP"))){
             v.addY(-1);
         }
         
         if(InputController.isKeyPressed(InputController.getControlId("MOVE_LEFT"))) {
             v.addX(-1);
+        }
+        if(InputController.isKeyPressed(InputController.getControlId("MOVE_DOWN"))) {
+        	v.addY(1);
         }
         
         v.setX((float) (v.getX()*speed*Time.deltaTime));

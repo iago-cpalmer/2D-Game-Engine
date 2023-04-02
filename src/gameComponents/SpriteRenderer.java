@@ -11,6 +11,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import gameEngine.GameObject;
+import gameEngine.Main;
 
 public class SpriteRenderer extends GameComponent{
     private String spritePath;
@@ -61,9 +62,13 @@ public class SpriteRenderer extends GameComponent{
         
         g2d.drawImage(sprite, (int) (xf*scaleCamera), (int) ( yf*scaleCamera) , 
                 (int) (width*scaleCamera), (int) (height*scaleCamera), null);
-        g2d.setColor(Color.RED);
-        g2d.fillOval((int) ((xf)*scaleCamera)-5, 
-        		(int) (yf*scaleCamera -5), 10, 10);
+        
+        if(Main.DEBUG_MODE == 1) {
+        	g2d.setColor(Color.RED);
+            g2d.fillOval((int) ((xf)*scaleCamera+scaleCamera*(gameObject.getPivot().getX()*sprite.getWidth()))-5, 
+            		(int) (yf*scaleCamera + scaleCamera*(gameObject.getPivot().getY()*sprite.getHeight()) -5), 10, 10);
+        }
+        
     }
     public int getWidth() {
         return sprite.getWidth();

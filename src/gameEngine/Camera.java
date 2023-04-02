@@ -3,6 +3,7 @@ package gameEngine;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -52,28 +53,31 @@ public class Camera extends JPanel{
 
         
         // Draw all GameObjects in the current scene
-        for(GameObject o:Main.currentScene.getGameObjects()) {
-            if(o.isActive()) {
-                if(o.getPosition().getX() >= position.getX()-(size.getX()/2+500) && 
-                        o.getPosition().getX() < position.getX()+(size.getX()/2+500) &&
-                        o.getPosition().getY() >= position.getY()-(size.getY()/2+500) &&
-                        o.getPosition().getY() < position.getY()+(size.getY()/2+500)) {
-                	// GameObject's active and near to the camera in world coords, this
-                	// allows to avoid painting objects that will not be visible in camera
-                    SpriteRenderer r = (SpriteRenderer)o.getComponent("SpriteRenderer");
-                    
-                    if(r!=null) {
-                        //calculate x and y position in camera from world coords
-                        int x = (int) ((o.getPosition().getX()- (r.getWidth()*o.getScale())*o.getPivot().getX()) - this.position.getX());
-                        int y = (int) ((o.getPosition().getY()-(r.getHeight()*o.getScale())*o.getPivot().getY()) - this.position.getY());
-                        r.paintComponent(g2, (int) (x+size.getX()/2), (int) (y+size.getY()/2), scale);
+        for(ArrayList<GameObject> os:Main.currentScene.getGameObjects())  {
+        	for(GameObject o: os) {
+                if(o.isActive()) {
+                    if(o.getPosition().getX() >= position.getX()-(size.getX()/2+500) && 
+                            o.getPosition().getX() < position.getX()+(size.getX()/2+500) &&
+                            o.getPosition().getY() >= position.getY()-(size.getY()/2+500) &&
+                            o.getPosition().getY() < position.getY()+(size.getY()/2+500)) {
+                    	// GameObject's active and near to the camera in world coords, this
+                    	// allows to avoid painting objects that will not be visible in camera
+                        SpriteRenderer r = (SpriteRenderer)o.getComponent("SpriteRenderer");
+                        
+                        if(r!=null) {
+                            //calculate x and y position in camera from world coords
+                            int x = (int) ((o.getPosition().getX()- (r.getWidth()*o.getScale())*o.getPivot().getX()) - this.position.getX());
+                            int y = (int) ((o.getPosition().getY()-(r.getHeight()*o.getScale())*o.getPivot().getY()) - this.position.getY());
+                            r.paintComponent(g2, (int) (x+size.getX()/2), (int) (y+size.getY()/2), scale);
 
+                        }
                     }
+                    
                 }
                 
             }
-            
         }
+        
        // Draw the buffer
         //g2.setColor(Color.RED);
         //g2.fillOval((int) (this.getWidth()/2-10), (int) (this.getHeight()/2-10), 10,10);

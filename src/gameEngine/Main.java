@@ -7,6 +7,8 @@ import scripts.World;
 
 public class Main {
     
+	public static final int DEBUG_MODE = 1;
+	
     static boolean gameIsRunning = true;
     public static MainWindow mainWindow;
     
@@ -21,14 +23,14 @@ public class Main {
         
         currentScene = new Scene("defaultScene");
         world = new World();
-        camera = new Camera(new Vector(0,0), new Vector(1920,1080), 1.0f);
+        camera = new Camera(new Vector(0,0), new Vector(1920,1080), 3.0f);
         mainWindow = new MainWindow(false);
         camera.setSize(mainWindow.getWidth(), mainWindow.getHeight());
         
         final int MAX_UPDATES_PER_SECOND = 120; //UPS
         final int MAX_FRAMES_PER_SECOND = 120; //FPS
         
-        final double MAX_UPDATE_TIME = 1000000000/ MAX_UPDATES_PER_SECOND; //Time between each update
+        final double MAX_UPDATE_TIME = 1000000000/MAX_UPDATES_PER_SECOND; //Time between each update
         final double MAX_FRAME_TIME = 1000000000/MAX_FRAMES_PER_SECOND; //Time between each frame
         
         double updateDeltaTime = 0;

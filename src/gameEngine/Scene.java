@@ -10,8 +10,7 @@ import gameObjects.Player;
 import scripts.World;
 
 public class Scene{
-    //private ArrayList<GameObject> objects;
-    private TreeMap<Float, GameObject> objects;
+    private TreeMap<Float, ArrayList<GameObject>> objects;
     private String sceneName;
     
     public Scene(String sceneName) {
@@ -20,28 +19,34 @@ public class Scene{
         start();
     }
     
-    public void removeObject(float key) {
-        objects.remove(key);
+    public boolean removeObject(float key, GameObject obj) {
+    	if(objects.get(key)!=null) {
+    		return objects.get(key).remove(obj);
+    	}
+    	return false;
+    	
     }
     
     public void addObject(GameObject o) {
-        float sorting = o.getSortingOrder();
-        while(objects.containsKey(sorting)) {
-            sorting+=0.01f;
+        o.setSortingOrder(o.getSortingOrder());
+        if(!objects.containsKey(o.getSortingOrder())) {
+        	objects.put(o.getSortingOrder(), new ArrayList<GameObject>());
         }
-        objects.put(sorting, o);
+        objects.get(o.getSortingOrder()).add(o);
         o.start();
     }
     
-    public Collection<GameObject> getGameObjects() {
+    public Collection<ArrayList<GameObject>> getGameObjects() {
         return objects.values();
     }
     
     public void update() {
-        for(GameObject gameObject: getGameObjects()) {
-            if(gameObject.isActive()) {
-                gameObject.update();
-            }
+        for(ArrayList<GameObject> gameObjects: getGameObjects()) {
+        	for(GameObject gameObject : gameObjects) {
+        		if(gameObject.isActive()) {
+                    gameObject.update();
+                }
+        	}
             
         }
     }

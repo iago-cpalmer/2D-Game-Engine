@@ -8,8 +8,10 @@ public class World {
     private Player player;
     
     public World() {
-       player = new Player(300,300,0, 1);
-       Main.currentScene.addObject(player);
+    	
+       player = new Player(0,0,0, 1);
+       player.setSortingOrder(10);
+      Main.currentScene.addObject(player);
        
        TestTree tree1 = new TestTree(100, 100, 0f);
        Main.currentScene.addObject(tree1);
@@ -17,18 +19,14 @@ public class World {
        TestTree tree2 = new TestTree(2000,100, 0f);
        Main.currentScene.addObject(tree2);
        
-       TestTree tree3 = new TestTree(400,400, 0f);
+       TestTree tree3 = new TestTree(1000, 1000, 0f);
        Main.currentScene.addObject(tree3);
        
+       if(Main.DEBUG_MODE==1) {
+    	   CenterOfWorld center = new CenterOfWorld(0, 0, 0);
+           Main.currentScene.addObject(center);
+       }
+      
        
-       CenterOfWorld center = new CenterOfWorld();
-       Main.currentScene.addObject(center);
-       
-       // Stress test
-       /*
-       for(int i = 0; i < 1000; i++) {
-           TestTree tree = new TestTree(100+i*10, 100+i*10);
-           Main.currentScene.addObject(tree);
-       }*/
     }
 }

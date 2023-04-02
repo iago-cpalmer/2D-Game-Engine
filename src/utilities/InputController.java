@@ -9,8 +9,9 @@ import javax.swing.SwingUtilities;
 import gameEngine.Main;
 public class InputController {
     
-    static final int N_CONTROLS = 4;
-    static String[] controlNames = {"MOVE_LEFT", "MOVE_RIGHT", "JUMP", "INTERACT"};
+    
+    static String[] controlNames = {"MOVE_LEFT", "MOVE_RIGHT", "JUMP", "INTERACT", "MOVE_UP", "MOVE_DOWN"};
+    static final int N_CONTROLS = controlNames.length;
     static HashMap<String, Integer> controls = new HashMap<String, Integer>(N_CONTROLS); //Name of control, e.g.: MOVE_LEFT & control's id
     static char[] keys = new char[N_CONTROLS]; //keys set to each id
     static boolean[] keysPressed = new boolean[N_CONTROLS]; //check if a key is pressed through id
@@ -29,6 +30,8 @@ public class InputController {
         keys[1] = 'd';
         keys[2] = ' ';
         keys[3] = 'e';
+        keys[4] = 'w';
+        keys[5] = 's';
     } 
     /**
      * Change key state

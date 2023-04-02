@@ -1,7 +1,6 @@
 package gameEngine;
 
 import gameComponents.GameComponent;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import utilities.Vector;
@@ -105,9 +104,12 @@ public abstract class GameObject {
     }
     
     public void setSortingOrder(float sortingOrder) {
-        Main.currentScene.removeObject(this.sortingOrder);
+        boolean b = Main.currentScene.removeObject(this.sortingOrder, this);
         this.sortingOrder = sortingOrder;
-        Main.currentScene.addObject(this);
+        if(b) {
+        	Main.currentScene.addObject(this);
+        }
+        
     }
     
     public float getSortingOrder() {
