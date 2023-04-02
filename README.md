@@ -17,6 +17,6 @@ Upcoming big features (this does not include bug fixes):
 - Physics System
 - UI System
 - Dynamic 2D Lighting
-- Post-processing effects
-- Shaders
+- Post-processing effects (?)
+- Shaders (?)
 
