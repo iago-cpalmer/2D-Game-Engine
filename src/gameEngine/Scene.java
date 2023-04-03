@@ -8,10 +8,12 @@ import java.util.TreeMap;
 import javax.swing.JPanel;
 import gameObjects.Player;
 import scripts.World;
+import utilities.Raycast2;
 
 public class Scene{
     private TreeMap<Float, ArrayList<GameObject>> objects;
     private String sceneName;
+    
     
     public Scene(String sceneName) {
         objects = new TreeMap<>();
@@ -44,11 +46,22 @@ public class Scene{
         for(ArrayList<GameObject> gameObjects: getGameObjects()) {
         	for(GameObject gameObject : gameObjects) {
         		if(gameObject.isActive()) {
+        			if(DebugMode.DEBUG_MODE==1) {
+        				if(Raycast2.requestedRaycast && gameObject.contains(Raycast2.vec)) {
+        					System.out.println(gameObject.getClass());
+        					DebugMode.selected = gameObject;
+        				}
+        			}
+        			
                     gameObject.update();
                 }
         	}
             
         }
+        if(DebugMode.DEBUG_MODE == 1) {
+        	Raycast2.requestedRaycast=false;
+        }
+        
     }
     
     public void start() {

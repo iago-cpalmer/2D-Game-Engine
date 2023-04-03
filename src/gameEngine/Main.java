@@ -7,8 +7,6 @@ import scripts.World;
 
 public class Main {
     
-	public static final int DEBUG_MODE = 1;
-	
     static boolean gameIsRunning = true;
     public static MainWindow mainWindow;
     
@@ -16,6 +14,7 @@ public class Main {
     public static Scene currentScene;
     public static World world;
     public static float timeWhenFrameStarts;
+    public static final int PX_PER_UNIT = 256;
     
     public static void main(String[] args) {
         InputController.setupControls();

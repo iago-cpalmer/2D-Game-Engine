@@ -2,8 +2,8 @@ package gameComponents;
 
 import gameEngine.GameObject;
 public abstract class GameComponent {
-    String componentName = "GameComponent";
-    GameObject gameObject;
+    protected String componentName = "GameComponent";
+    protected GameObject gameObject;
     
     public String getComponentName() {
         return componentName;

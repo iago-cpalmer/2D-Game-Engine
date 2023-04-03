@@ -8,7 +8,7 @@ import utilities.Vector;
 import gameEngine.GameObject;
 
 public class Player extends GameObject{
-    private float speed = 300;
+    private float speed = 2;
     public Player() {
         super();
         this.setPivot(0.5f, 0.5f);
@@ -41,6 +41,7 @@ public class Player extends GameObject{
     public void loadComponents() {
     	addComponent(new SpriteRenderer("Images/test.png", this));
         addComponent(new CameraBehav(this));
+        
     }
     /**
      * Testing function for the movement of the player. 
@@ -53,19 +54,20 @@ public class Player extends GameObject{
             v.addX(1);
         }
         if(InputController.isKeyPressed(InputController.getControlId("MOVE_UP"))){
-            v.addY(-1);
+            v.addY(1);
         }
         
         if(InputController.isKeyPressed(InputController.getControlId("MOVE_LEFT"))) {
             v.addX(-1);
         }
         if(InputController.isKeyPressed(InputController.getControlId("MOVE_DOWN"))) {
-        	v.addY(1);
+        	v.addY(-1);
         }
         
         v.setX((float) (v.getX()*speed*Time.deltaTime));
         v.setY((float) (v.getY()*speed*Time.deltaTime));
         position.addVector(v);
+        //System.out.println("	Player Position: " + position);
     }
     
     @Override

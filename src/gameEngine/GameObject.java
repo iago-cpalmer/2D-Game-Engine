@@ -1,5 +1,6 @@
 package gameEngine;
 
+import gameComponents.Collider;
 import gameComponents.GameComponent;
 import java.util.HashMap;
 
@@ -110,6 +111,13 @@ public abstract class GameObject {
         	Main.currentScene.addObject(this);
         }
         
+    }
+    
+    public boolean contains(Vector v) {
+    	if(!components.containsKey("Collider")) {
+    		return false;
+    	}
+    	return ((Collider) components.get("Collider")).contains(v);
     }
     
     public float getSortingOrder() {

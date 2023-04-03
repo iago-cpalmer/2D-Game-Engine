@@ -21,13 +21,5 @@ public class CenterOfWorld extends GameObject{
 	    @Override
 	    public void loadComponents() {
 	    	addComponent(new SpriteRenderer("Images/crosshair.png", this));
-	    }
-	    @Override
-	    public void update(){
-	    	super.update();
-	        //this.setRotation((this.getRotation()+0.5f)%360);
-	    }
-	    
-	
-
+	    }  
 }

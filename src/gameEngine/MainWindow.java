@@ -10,6 +10,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 
 import utilities.InputController;
+import utilities.Raycast2;
 
 public class MainWindow extends JFrame implements KeyListener, MouseListener{
     boolean  fullScreen;
@@ -80,6 +81,10 @@ public class MainWindow extends JFrame implements KeyListener, MouseListener{
                 fullScreen = false;
             }
         }
+        
+        if(e.getKeyCode()==112) {
+        	DebugMode.DEBUG_MODE=DebugMode.DEBUG_MODE==1?0:1;
+        }
     }
 
     @Override
@@ -102,7 +107,13 @@ public class MainWindow extends JFrame implements KeyListener, MouseListener{
 
     @Override
     public void mousePressed(MouseEvent e) {
-        switch(e.getButton()) {
+    	if(DebugMode.DEBUG_MODE==1) {
+    		if(e.getButton() == MouseEvent.BUTTON1) {
+    			// Send raycast
+    			Raycast2.sendRaycast(e.getX(), e.getY());
+    		}
+    	} else {
+    		switch(e.getButton()) {
             case MouseEvent.BUTTON1:
                 InputController.setMousePressedState(0, true);
                 break;
@@ -113,6 +124,8 @@ public class MainWindow extends JFrame implements KeyListener, MouseListener{
                 InputController.setMousePressedState(2, true);
                 break;       
         }
+    	}
+        
     }
 
     @Override

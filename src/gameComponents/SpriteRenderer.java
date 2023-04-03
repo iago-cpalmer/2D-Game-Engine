@@ -10,6 +10,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import gameEngine.DebugMode;
 import gameEngine.GameObject;
 import gameEngine.Main;
 
@@ -67,9 +68,9 @@ public class SpriteRenderer extends GameComponent{
                 (int) (width), (int) (height), null);
         g2d.setTransform(old);
         
-        if(Main.DEBUG_MODE == 1) {
+        if(DebugMode.DEBUG_MODE == 1) {
         	g2d.setColor(Color.BLUE);
-        	g2d.drawRect((int) (xf),(int) (yf), (int) (width), (int) (height));
+        	//g2d.drawRect((int) (xf),(int) (yf), (int) (width), (int) (height));
         	
         	g2d.setColor(Color.RED);
             g2d.fillOval((int) ((xf)+(gameObject.getPivot().getX()*width))-5, 

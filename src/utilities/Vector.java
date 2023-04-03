@@ -46,4 +46,8 @@ public class Vector {
         this.x=v.getX();
         this.y=v.getY();
     }
+    @Override
+    public String toString() {
+    	return "(" + x + ", " + y +")";
+    }
 }
